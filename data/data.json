@@ -1,7 +1,26 @@
 [
   {
     "id": 1,
-    "name": "Karthi",
-    "email": "karthi@gmail.com"
+    "empname": "karthi",
+    "position": "Trainee",
+    "salary": 6000
+  },
+  {
+    "id": 2,
+    "empname": "Darshan",
+    "position": "Trainee",
+    "salary": 6000
+  },
+  {
+    "id": 3,
+    "empname": "siva",
+    "position": "Developer",
+    "salary": 21000
+  },
+  {
+    "id": 4,
+    "empname": "selva",
+    "position": "Trainee",
+    "salary": 40000
   }
 ]

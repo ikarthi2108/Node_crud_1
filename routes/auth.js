@@ -7,16 +7,17 @@ const { readData } = require('../utils/dataUtils'); // function to read the data
 
 // Authentication route
 router.post('/login', (req, res) => {
-  const { name } = req.body;           // get the name of the particular user
+  const { empname } = req.body;           // get the name of the particular user
   const users = readData();
 
-  const user = users.find(user => user.name === name);  //check the name is found in tha data
+  const user = users.find(user => user.empname === empname);  //check the name is found in tha data
 
   if (!user) {
     return res.status(401).json({ message: 'User not found' });
   }
 
-  const token = jwt.sign({ name: user.name }, process.env.ACCESS_TOKEN);  // if found creates an token
+  const token = jwt.sign({ empname: user.empname }, process.env.ACCESS_TOKEN); // if found creates an token
+  
 
   res.json({ message: 'Login successful', token });
 });
@@ -42,8 +43,8 @@ const validateToken = (req, res, next) => {           //Middleware function to v
   // Protected route to retrieve user data based on token
   router.get('/user', validateToken, (req, res) => { // pasing the validate function as an middleware
     const userData = readData();
-    const requestedUser = userData.find(user => user.name === req.decodedUser.name);
-  
+    const requestedUser = userData.find(user => user.empname === req.decodedUser.empname);
+
     if (!requestedUser) {
       return res.status(404).json({ message: 'Requested user not found.' });
     }

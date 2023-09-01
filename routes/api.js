@@ -36,16 +36,16 @@ router.post("/", validateData, (req, res) => {
 router.put("/:id", (req, res) => {
   try {
     const data = readData();
-    const id = parseInt(req.params.id);   // route to update the data in the json using id
-    const updatedItem = req.body;
-    const indexToUpdate = data.findIndex((item) => item.id === id);    // find the index of the item to be  updated
-    data[indexToUpdate] = updatedItem;
-    writeData(data);
+    const id = parseInt(req.params.id);
+  const indexToUpdate = data.findIndex((item) => item.id === id);
+    data[indexToUpdate] = { ...data[indexToUpdate], ...req.body }; // the req body obj overwrites the data of the existing object
+   writeData(data);
     res.json({ message: "Update successful" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 router.delete("/:id", (req, res) => {
   try {
