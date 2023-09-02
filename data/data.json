@@ -22,5 +22,17 @@
     "empname": "selva",
     "position": "Trainee",
     "salary": 40000
+  },
+  {
+    "id": 5,
+    "empname": "kriti",
+    "position": "Trainee",
+    "salary": 7000
+  },
+  {
+    "id": 5,
+    "empname": "kriti",
+    "position": "Trainee",
+    "salary": 7000
   }
 ]

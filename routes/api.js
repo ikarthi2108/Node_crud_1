@@ -5,7 +5,7 @@ const validateData = require("../middlewares/validator.js"); // import the middl
 const { readData, writeData } = require("../utils/dataUtils"); // dependent functions
 const authRoutes = require("./auth"); // Import the auth route module
 const errorHandler = require("../errorhandler.js"); // Import the errorHandler module
-
+const fileUploadRoutes = require('../FileUpload/fileUpload.js');
 
 // const dataPath = path.join(__dirname, "../data/data.json");
 
@@ -40,7 +40,7 @@ router.put("/:id", (req, res) => {
   const indexToUpdate = data.findIndex((item) => item.id === id);
     data[indexToUpdate] = { ...data[indexToUpdate], ...req.body }; // the req body obj overwrites the data of the existing object
    writeData(data);
-    res.json({ message: "Update successful" });
+    res.json({ status: "Updated successfully" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
@@ -61,5 +61,6 @@ router.delete("/:id", (req, res) => {
 });
 
 router.use("/auth", authRoutes);  //authuntication routes
+// router.use("/fileUpload",fileUploadRoutes)
 
 module.exports = router;
